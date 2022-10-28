@@ -114,7 +114,7 @@ func (p *ReverseProxy) ServeHTTP(ctx *fasthttp.RequestCtx) {
 
 	// prepare request(replace headers and some URL host)
 	if ip, _, err := net.SplitHostPort(ctx.RemoteAddr().String()); err == nil {
-		req.Header.Add("X-Forwarded-For", ip)
+		req.Header.Add("X-Real-Ip", ip)
 	}
 
 	// to save all response header
